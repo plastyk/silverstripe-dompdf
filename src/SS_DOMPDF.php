@@ -12,7 +12,6 @@ use SilverStripe\Control\Director;
  */
 class SS_DOMPDF
 {
-
     protected $dompdf;
 
     public function __construct()
@@ -22,29 +21,29 @@ class SS_DOMPDF
 
         //set configuration
         $this->dompdf = new Dompdf();
-        $this->dompdf->set_base_path(BASE_PATH);
-        $this->dompdf->set_host(Director::absoluteBaseURL());
+        $this->dompdf->setBasePath(BASE_PATH);
+        $this->dompdf->setBaseHost(Director::absoluteBaseURL());
     }
 
     //
     public function setOption($key, $value)
     {
-        $this->dompdf->set_option($key, $value);
+        $this->dompdf->getOptions()->set($key, $value);
     }
 
     public function set_paper($size, $orientation)
     {
-        $this->dompdf->set_paper($size, $orientation);
+        $this->dompdf->setPaper($size, $orientation);
     }
 
     public function setHTML($html)
     {
-        $this->dompdf->load_html($html);
+        $this->dompdf->loadHtml($html);
     }
 
     public function setHTMLFromFile($filename)
     {
-        $this->dompdf->load_html_file($filename);
+        $this->dompdf->loadHtmlFile($filename);
     }
 
     public function render()
